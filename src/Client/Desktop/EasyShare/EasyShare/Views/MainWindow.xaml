@@ -1,0 +1,41 @@
+﻿<Window x:Class="EasyShare.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        mc:Ignorable="d" 
+        xmlns:ToggleSwitch="clr-namespace:ToggleSwitch;assembly=ToggleSwitch"
+        Title="Easy Share" Height="350" Width="525" ResizeMode="CanResizeWithGrip">
+    <Grid>
+        <DockPanel>
+            <StatusBar DockPanel.Dock="Bottom">
+                <Label Content="Status" />
+                <Label Content="{Binding Status}" />
+            </StatusBar>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="26"/>
+                    <RowDefinition Height="26"/>
+                    <RowDefinition Height="26"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Id" />
+                <TextBox Grid.Row="0" Grid.Column="1" Height="23" Width="120" TextWrapping="Wrap" Text="{Binding Id}" HorizontalAlignment="Left" />
+
+                <Label Grid.Row="1" Grid.Column="0" Content="Capture Clipboard" />
+                <ToggleSwitch:HorizontalToggleSwitch Grid.Row="1" Grid.Column="1" IsChecked="{Binding IsListening, Mode=TwoWay}" Height="26" HorizontalAlignment="Left" />
+
+                <Label Grid.Row="2" Grid.Column="0" Content="Sync Clipboard" />
+                <ToggleSwitch:HorizontalToggleSwitch Grid.Row="2" Grid.Column="1" IsChecked="{Binding IsSyncing, Mode=TwoWay}" Height="26" HorizontalAlignment="Left" />
+
+                <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Header="Log">
+                    <DataGrid />
+                </GroupBox>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>
